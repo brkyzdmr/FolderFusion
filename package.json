@@ -1,18 +1,18 @@
 {
   "name": "folder-fusion",
   "displayName": "FolderFusion",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Combine and export folder/file contents or structure for seamless LLM analysis.",
   "author": "Berkay Ezdemir",
   "publisher": "berkayezdemir",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/brkyzdmr/folder-fusion.git"
+    "url": "https://github.com/brkyzdmr/FolderFusion.git"
   },
-  "homepage": "https://github.com/brkyzdmr/folder-fusion",
+  "homepage": "https://github.com/brkyzdmr/FolderFusion",
   "bugs": {
-    "url": "https://github.com/brkyzdmr/folder-fusion/issues"
+    "url": "https://github.com/brkyzdmr/FolderFusion/issues"
   },
   "keywords": [
     "copy",
