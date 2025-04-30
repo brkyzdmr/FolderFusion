@@ -1,0 +1,187 @@
+{
+  "name": "folder-fusion",
+  "displayName": "FolderFusion",
+  "version": "1.0.1",
+  "description": "Combine and export folder/file contents or structure for seamless LLM analysis.",
+  "author": "Berkay Ezdemir",
+  "publisher": "berkayezdemir",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brkyzdmr/folder-fusion.git"
+  },
+  "homepage": "https://github.com/brkyzdmr/folder-fusion",
+  "bugs": {
+    "url": "https://github.com/brkyzdmr/folder-fusion/issues"
+  },
+  "keywords": [
+    "copy",
+    "code",
+    "combine",
+    "files",
+    "folder",
+    "llm",
+    "ai",
+    "clipboard",
+    "structure",
+    "context"
+  ],
+  "categories": [
+    "Programming Languages",
+    "Other",
+    "Formatters"
+  ],
+  "icon": "icon/icon.png",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "activationEvents": [
+    "onCommand:folderFusion.getFolderContent",
+    "onCommand:folderFusion.getCodeFilesContent",
+    "onCommand:folderFusion.getFolderStructure"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "folderFusion.getFolderContent",
+        "title": "FolderFusion: Get Folder Content (Select Types)..."
+      },
+      {
+        "command": "folderFusion.getCodeFilesContent",
+        "title": "FolderFusion: Get Code Files Content"
+      },
+      {
+        "command": "folderFusion.getFolderStructure",
+        "title": "FolderFusion: Get Folder Structure"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "explorerResourceIsFolder || resourceExtname",
+          "command": "folderFusion.getFolderContent",
+          "group": "navigation@6"
+        },
+        {
+          "when": "explorerResourceIsFolder || resourceExtname",
+          "command": "folderFusion.getCodeFilesContent",
+          "group": "navigation@6"
+        },
+        {
+          "when": "explorerResourceIsFolder",
+          "command": "folderFusion.getFolderStructure",
+          "group": "navigation@7"
+        }
+      ],
+      "explorer/context:multi": [
+        {
+          "command": "folderFusion.getFolderContent",
+          "group": "navigation@6"
+        },
+        {
+          "command": "folderFusion.getCodeFilesContent",
+          "group": "navigation@6"
+        },
+        {
+          "command": "folderFusion.getFolderStructure",
+          "group": "navigation@7"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "FolderFusion Settings",
+      "properties": {
+        "folderFusion.exclude": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "**/node_modules/**",
+            "**/.git/**",
+            "**/.vscode/**",
+            "**/.DS_Store/**",
+            "**/dist/**",
+            "**/build/**",
+            "**/out/**"
+          ],
+          "description": "Glob patterns for files/folders to exclude during traversal. Use patterns like '**/folder_name/**' or '**/*.log'."
+        },
+        "folderFusion.includeSeparator": {
+          "type": "boolean",
+          "default": true,
+          "description": "Insert file path separators between combined file contents."
+        },
+        "folderFusion.codeFileExtensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            ".js",
+            ".ts",
+            ".jsx",
+            ".tsx",
+            ".mjs",
+            ".cjs",
+            ".py",
+            ".pyw",
+            ".java",
+            ".kt",
+            ".kts",
+            ".cs",
+            ".go",
+            ".php",
+            ".rb",
+            ".rbw",
+            ".c",
+            ".h",
+            ".cpp",
+            ".hpp",
+            ".cxx",
+            ".hxx",
+            ".swift",
+            ".rs",
+            ".html",
+            ".htm",
+            ".css",
+            ".scss",
+            ".sass",
+            ".less",
+            ".json",
+            ".yaml",
+            ".yml",
+            ".xml",
+            ".toml",
+            ".sh",
+            ".bash",
+            ".zsh",
+            ".sql",
+            ".md",
+            ".markdown"
+          ],
+          "description": "List of file extensions considered as 'code files' for the 'Get Code Files Content' command. Include the leading dot (e.g., '.js')."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package",
+    "start": "code --new-window --extensionDevelopmentPath=${workspaceFolder}"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3",
+    "vsce": "^2.15.0"
+  }
+}

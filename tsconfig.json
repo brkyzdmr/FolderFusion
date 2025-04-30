@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS", // VS Code extensions use CommonJS
+    "target": "ES2020",   // Target a reasonably modern ES version
+    "lib": ["ES2020"],     // Include necessary libraries
+    "outDir": "dist",     // Output compiled JS to the 'dist' folder
+    "rootDir": "src",     // Source files are in 'src'
+    "sourceMap": true,    // Generate source maps for debugging
+    "strict": true,       // Enable strict type checking
+    "esModuleInterop": true, // Allows default imports from commonjs modules
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Ensure consistent file casing
+    "moduleResolution": "node" // Use Node.js module resolution
+  },
+  "include": [
+    "src/**/*" // Compile all TS files in the src directory
+  ],
+  "exclude": [
+    "node_modules", // Exclude node_modules
+    ".vscode-test"   // Exclude VS Code test runner files
+  ]
+}
